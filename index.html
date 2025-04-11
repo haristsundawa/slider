@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Pain Scale Slider</title>
   <style>
     body {
@@ -9,41 +9,75 @@
       padding: 30px;
       background-color: #f4f4f4;
     }
-    .slider-label {
+
+    h2 {
+      text-align: center;
+    }
+
+    .slider-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 25px;
+      border-radius: 10px;
+      background: linear-gradient(to right, #00c853, #ffd600, #ff6d00, #d50000);
+      outline: none;
+      margin-top: 20px;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #333;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 0 2px rgba(0,0,0,0.5);
+    }
+
+    .labels {
       display: flex;
       justify-content: space-between;
+      font-size: 14px;
       margin-top: 10px;
       font-weight: bold;
     }
-    input[type=range] {
-      width: 100%;
-      accent-color: #ff0000;
-    }
+
     #value {
-      font-size: 24px;
-      color: #333;
       text-align: center;
-      margin-top: 10px;
+      font-size: 20px;
+      margin-top: 20px;
+      color: #333;
     }
   </style>
 </head>
 <body>
-
   <h2>Seberapa parah rasa nyeri yang Anda rasakan?</h2>
-  <input type="range" min="0" max="10" value="5" id="slider" step="1">
-  <div class="slider-label">
-    <span>No Pain (0)</span>
-    <span>Worst Pain (10)</span>
+  <div class="slider-container">
+    <input type="range" min="0" max="10" value="5" class="slider" id="slider" step="1" />
+    <div class="labels">
+      <span>0<br>no pain</span>
+      <span>2<br>mild pain</span>
+      <span>4<br>moderate</span>
+      <span>7<br>severe</span>
+      <span>10<br>worst</span>
+    </div>
+    <div id="value">Nilai: 5</div>
   </div>
-  <div id="value">Nilai: 5</div>
 
   <script>
-    const slider = document.getElementById('slider');
-    const value = document.getElementById('value');
-    slider.addEventListener('input', () => {
-      value.innerText = 'Nilai: ' + slider.value;
+    const slider = document.getElementById("slider");
+    const value = document.getElementById("value");
+    slider.addEventListener("input", () => {
+      value.innerText = "Nilai: " + slider.value;
     });
   </script>
-
 </body>
 </html>
