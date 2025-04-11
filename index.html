@@ -56,6 +56,18 @@
       margin-top: 20px;
       color: #333;
     }
+
+    #save-btn {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -70,13 +82,31 @@
       <span>10<br>worst</span>
     </div>
     <div id="value">Nilai: 5</div>
+
+    <button id="save-btn">Simpan</button>
   </div>
 
   <script>
     const slider = document.getElementById("slider");
     const value = document.getElementById("value");
+    const saveBtn = document.getElementById("save-btn");
+
+    // 🔁 Cek kalau ada nilai tersimpan di localStorage
+    const savedValue = localStorage.getItem("painScaleValue");
+    if (savedValue !== null) {
+      slider.value = savedValue;
+      value.innerText = "Nilai: " + savedValue;
+    }
+
+    // 🔄 Update teks saat digeser
     slider.addEventListener("input", () => {
       value.innerText = "Nilai: " + slider.value;
+    });
+
+    // 💾 Simpan ke localStorage saat klik tombol
+    saveBtn.addEventListener("click", () => {
+      localStorage.setItem("painScaleValue", slider.value);
+      alert("Nilai " + slider.value + " berhasil disimpan dan akan tetap tersimpan meski di-refresh!");
     });
   </script>
 </body>
