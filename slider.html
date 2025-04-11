@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pain Scale Slider</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f4f4f4;
+    }
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: #ff0000;
+    }
+    #value {
+      font-size: 24px;
+      color: #333;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Seberapa parah rasa nyeri yang Anda rasakan?</h2>
+  <input type="range" min="0" max="10" value="5" id="slider" step="1">
+  <div class="slider-label">
+    <span>No Pain (0)</span>
+    <span>Worst Pain (10)</span>
+  </div>
+  <div id="value">Nilai: 5</div>
+
+  <script>
+    const slider = document.getElementById('slider');
+    const value = document.getElementById('value');
+    slider.addEventListener('input', () => {
+      value.innerText = 'Nilai: ' + slider.value;
+    });
+  </script>
+
+</body>
+</html>
